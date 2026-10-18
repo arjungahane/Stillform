@@ -1,10 +1,19 @@
+import React from 'react';
 import Cart from './components/Cart';
 import ProductList from './components/ProductList';
 import ThemeToggle from './components/ThemeToggle';
 import { useCart } from './hooks/useCart';
 
 export default function App() {
-  const { cart, addToCart, removeFromCart, clearCart, cartTotal, itemCount } = useCart();
+  const cartState = useCart() || {};
+  const { 
+    cart = [], 
+    addToCart = () => {}, 
+    removeFromCart = () => {}, 
+    clearCart = () => {}, 
+    cartTotal = 0, 
+    itemCount = 0 
+  } = cartState;
 
   return (
     <div className="app-shell">
